@@ -95,6 +95,6 @@ public class Main {
         for (; year <= showUntilYear; year += cometPeriod) {
             System.out.print("\n" + year);
         }
-
     }
+
 }
