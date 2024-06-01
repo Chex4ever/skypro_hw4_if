@@ -41,4 +41,5 @@ public class Main {
             System.out.print(array1[i] + separator);
         }
     }
+
 }
