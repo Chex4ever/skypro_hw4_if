@@ -1,14 +1,11 @@
 public class Main {
     public static void main(String[] args) {
+        //hw4-if
         // Я тут не заметил задач, где нужно было бы использовать && и || - я их "потратил" только в последней задаче.
         System.out.print("Задача 1. ");
         int currentAge = 37;
         int adultAge = 18;
         System.out.print("Если возраст человека равен " + currentAge + ", то он ");
-        //Тут Вы можете сказать,мол, зачем я вынес это из условия, и, действительно,
-        //этот вступительный sout - с одной стороны уменьшает читабельность, и вообще усложняет код,
-        //но иначе sout в условии получается слишком широкий и не влезает по ширине :)
-        //да и задача так записана, что можно интерпретировать и так.
         if (currentAge < adultAge) {
             System.out.println("не достиг совершеннолетия, нужно немного подождать.");
         } else {
@@ -25,13 +22,12 @@ public class Main {
         } else {
             System.out.println("На улице ровно " + belowIsCriticalToWearHatTemperature +
                     " градусов! Идти без шапки, или лучше одеть... Надо посмотреть прогноз...");
-            //Ладно, ладно, больше я не буду дотошничать до условий...
         }
 
         System.out.print("Задача 3. ");
         int currentSpeed = 37;
         int maxSpeed = 60;
-        if (currentSpeed <= maxSpeed) { //это ведь всё так максимальная *допустимая* скорость
+        if (currentSpeed <= maxSpeed) {
             System.out.println("Если скорость " + currentSpeed + ", то можно ездить спокойно.");
         } else {
             System.out.println("Если скорость " + currentSpeed + ", то придется заплатить штраф.");
@@ -67,8 +63,6 @@ public class Main {
             System.out.println("можно кататься на аттракционе в сопровождении взрослого.");
         } else {
             System.out.println("можно кататься на аттракционе без сопровождения взрослого.");
-        }
-
         System.out.print("Задача 6. ");
         int trainWaggonCapacityMax = 102;
         int trainWaggonCapacitySit = 60;
@@ -82,7 +76,6 @@ public class Main {
         } else {
             System.out.println("Мест нет.");
         }
-
         System.out.print("Задача 7. ");
         int one = 1;
         int two = 2;
@@ -100,8 +93,6 @@ public class Main {
         } else {
             System.out.println("более одной переменной имеет максимальное значение");
         }
-        // Вот решение в стиле "кручу-верчу - оптимизировать хочу!".
-        // Тут вроде решается за 2 логических операций.
         System.out.print("Задача 7. Способ 2. Наибольшая переменная: ");
         if (one > two) {
             if (one > three) {
@@ -116,9 +107,51 @@ public class Main {
                 System.out.println("three");
             }
         }
-        // Для разнообразия, то же самое только в одну строку
         System.out.println("Задача 7. Способ 3. Наибольшая переменная: "
                 + ((one > two) ? ((one > three) ? "one" : "three") : (two > three) ? "two" : "three"));
+          
+                //next hw
+        //Задача 1
+        int clientOS = 1;
+        if (clientOS == 1) System.out.println("Установите версию приложения для Android по ссылке");
+        else System.out.println("Установите версию приложения для iOS по ссылке");
+
+        //Задача 2
+        clientOS = 1;
+        int clientDeviceYear = 2015;
+        String needLightVersion = ((clientDeviceYear < 2015) ? "облегчённую " : "");
+        if (clientOS == 1)
+            System.out.println("Установите " + needLightVersion + "версию приложения для Android по ссылке");
+        else System.out.println("Установите " + needLightVersion + "версию приложения для iOS по ссылке");
+
+        //Задача 3
+        int year = 2021;
+        boolean isLeapYear = ((year > 1584) && (year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+        System.out.println(year + " год " + (isLeapYear ? "" : "не ") + "является високосным");
+
+        //Задача 4
+        int deliveryDistance = 95;
+        int[] deliveryRangesAscending = {20, 60, 100};
+        if (deliveryDistance > deliveryRangesAscending[deliveryRangesAscending.length - 1])
+            System.out.println("Превышено максимальное расстояние, доставки нет");
+        else {
+            int deliveryTime = 1;
+            for (int range : deliveryRangesAscending) {
+                if (deliveryDistance > range) deliveryTime++;
+                else break;
+            }
+            System.out.println("Потребуется дней: "+deliveryTime);
+        }
+
+        //Задача 5
+        int monthNumber = 12;
+        switch (monthNumber){
+            case 12,1,2 -> System.out.println("Зима");
+            case 3,4,5 -> System.out.println("Весна");
+            case 6,7,8 -> System.out.println("Лето");
+            case 9,10,11 -> System.out.println("Осень");
+            default -> System.out.println("Введите номер месяца согласно григорианскому календарю");
+        }
     }
 
 }
