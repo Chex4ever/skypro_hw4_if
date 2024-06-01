@@ -1,45 +1,31 @@
 public class Main {
-    public static void main(String[] args) {
-        System.out.print("Задача 1: ");
-        int year = -1600;
-        System.out.println(year + (isLeapYear(year) ? " год — високосный год" : " год — невисокосный год"));
+	public static void main(String[] args) {
+		Author authorPelevinViktor = new Author("Виктор", "Пелевин");
+		Author authorSlavnikovaOlga = new Author("Ольга", "Славникова");
+		Author author3 = new Author("Виктор", "Пелевин");
+		Book bookChapaevAndTheVoid = new Book("Чапаев - и пустота", authorPelevinViktor, 1996);
+		Book book2017 = new Book("2017", authorSlavnikovaOlga, 2006);
+		Book book3 = new Book("Чапаев - и пустота", author3, 1996);
 
-        System.out.print("Задача 2: ");
-        int clientDeviceOS = -1; // 0 - iOS, 1 - Android
-        int clientDeviceYear = -1;
-        printRecommendedVersion(clientDeviceOS, clientDeviceYear);
+		System.out.println("Проверяем как работает сравнение книг:");
+		objectFullInfo(bookChapaevAndTheVoid, book2017, book3);
+		System.out.println("book3==book1 is " + (book3 == bookChapaevAndTheVoid));
+		System.out.println("book3.equals(book1) is " + book3.equals(bookChapaevAndTheVoid));
+		System.out.println("book3.equals(book2) is " + book3.equals(book2017));
+		System.out.println();
+		System.out.println("Проверяем как работает сравнение авторов:");
+		objectFullInfo(authorPelevinViktor, authorSlavnikovaOlga, author3);
+		System.out.println("author3==author1 is " + (author3 == authorPelevinViktor));
+		System.out.println("author3.equals(author1) is " + author3.equals(authorPelevinViktor));
+		System.out.println("author3.equals(author2) is " + author3.equals(authorSlavnikovaOlga));
+	}
 
-        System.out.print("Задача 3: ");
-        int distance = -1; // max 100
-        int days = countDeliveryDays(distance); //return -1 if fail
-        System.out.println(days >= 0 ? "Потребуется дней: " + days : "Доставки нет");
-    }
-
-    public static boolean isLeapYear(int year) {
-        return (year > 1584) && (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
-    }
-
-    public static void printRecommendedVersion(int os, int year) {
-        int recommendedYear = 2024;
-        String version = year < recommendedYear ? "облегчённую " : "";
-        String osName = "unknown";
-        switch (os) {
-            case 0 -> osName = "iOs";
-            case 1 -> osName = "Android";
-        }
-        System.out.println("Установите " + version + "версию приложения для " + osName + " по ссылке");
-    }
-
-    public static int countDeliveryDays(int distance) {
-        int[] deliveryRangesAscending = {20, 60, 100};
-        if (distance > deliveryRangesAscending[deliveryRangesAscending.length - 1] || distance < 0)
-            return -1;
-        else {
-            int deliveryTime = 1;
-            for (int range : deliveryRangesAscending) {
-                if (distance > range) deliveryTime++;
-            }
-            return deliveryTime;
-        }
-    }
+	public static void objectFullInfo(Object... objectArray) {
+		for (Object object : objectArray) {
+		System.out.format("%-55s | hash=%-9s | id=%-9s%n"
+		, object.toString()
+		, Integer.toHexString(object.hashCode())
+		, Integer.toHexString(System.identityHashCode(object)));
+		}
+	}
 }
