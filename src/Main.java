@@ -1,44 +1,55 @@
 public class Main {
     public static void main(String[] args) {
-        //System.out.println("Задача 1");
-        int[] array1 = new int[]{1, 2, 3};
-        float[] array2 = {1.57f, 7.654f, 9.986f};
-        String[] array3 = {"Один", "Два", "Три"};
+        task1();
+        task2();
+        task3();
+        task4();
+    }
 
-        System.out.println("\nЗадача 2");
-        for (int i = 0; i < 3; i++) {
-            String separator = (i != array1.length - 1) ? ", " : "\n";
-            System.out.print(array1[i] + separator);
+    public static int[] generateRandomArray() {
+        java.util.Random random = new java.util.Random();
+        int[] arr = new int[30];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(100_000) + 100_000;
         }
-        for (int i = 0; i < 3; i++) {
-            String separator = (i != array1.length - 1) ? ", " : "\n";
-            System.out.print(array2[i] + separator);
-        }
-        for (int i = 0; i < 3; i++) {
-            String separator = (i != array1.length - 1) ? ", " : "\n";
-            System.out.print(array3[i] + separator);
-        }
+        return arr;
+    }
 
-        System.out.println("\nЗадача 3");
-        for (int i = 2; i >= 0; i--) {
-            String separator = (i != 0) ? ", " : "\n";
-            System.out.print(array1[i] + separator);
+    public static void task1() {
+        int[] arr = generateRandomArray();
+        long sum = 0;
+        for (int i : arr) {
+            sum += i;
         }
-        for (int i = 2; i >= 0; i--) {
-            String separator = (i != 0) ? ", " : "\n";
-            System.out.print(array2[i] + separator);
+        System.out.printf("%nСумма трат за месяц составила %d рублей", sum);
+    }
+
+    public static void task2() {
+        int[] arr = generateRandomArray();
+        int min = arr[0];
+        int max = arr[0];
+        for (int i : arr) {
+            max = i > max ? i : max;
+            min = i < min ? i : min;
         }
-        for (int i = 2; i >= 0; i--) {
-            String separator = (i != 0) ? ", " : "\n";
-            System.out.print(array3[i] + separator);
+        System.out.printf("%nМинимальная сумма трат за день составила %d рублей. " +
+                "Максимальная сумма трат за день составила %d рублей", min, max);
+    }
+    public static void task3() {
+        int[] arr = generateRandomArray();
+        long sum = 0;
+        double average = 0d;
+        for (int i : arr) {
+            sum += i;
         }
-        System.out.println("\nЗадача 4");
-        for (int i=0;i<array1.length;i++) {
-            String separator = (i != array1.length - 1) ? ", " : "\n";
-            if (array1[i]%2!=0){
-                array1[i]++;
-            }
-            System.out.print(array1[i] + separator);
+        average= (double) sum /arr.length;
+        System.out.printf("%nСредняя сумма трат за месяц составила %.2f рублей%n", average);
+    }
+
+    public static void task4() {
+        char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
+        for (int i = reverseFullName.length - 1; i >= 0; i--) {
+            System.out.print(reverseFullName[i]);
         }
     }
 
